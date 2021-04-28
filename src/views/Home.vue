@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Ruta Protegid sdsd</h1> 
+        <h1>App Firebase Hosting - (Ruta Protegid)</h1> 
         <p v-if="user">{{ user.email }}</p>
         <hr>
         <router-link class="btn btn-primary btn-block" to="/crear_tarea">Nueva Tarea</router-link>  
