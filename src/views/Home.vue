@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>App Firebase Hosting - (Ruta Protegid)</h1> 
+        <h1>App Firebase Hosting - (Ruta Protegida)</h1> 
         <h4>Nuevo Ajuste para validar el deploy</h4>
         <p v-if="user">{{ user.email }}</p>
         <hr>
