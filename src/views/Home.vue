@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>App Firebase Hosting - (Ruta Protegida)</h1> 
-        <h4>Nuevo Ajuste para validar el deploy</h4>
+        <h4>Nuevo Ajuste para validar el deploy - 2</h4>
         <p v-if="user">{{ user.email }}</p>
         <hr>
         <router-link class="btn btn-primary btn-block" to="/crear_tarea">Nueva Tarea</router-link>  
