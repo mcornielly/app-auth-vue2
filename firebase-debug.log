@@ -1,0 +1,21 @@
+[debug] [2021-04-28T19:24:06.904Z] ----------------------------------------------------------------------
+[debug] [2021-04-28T19:24:06.905Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\mcorn\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-04-28T19:24:06.905Z] CLI Version:   9.10.0
+[debug] [2021-04-28T19:24:06.905Z] Platform:      win32
+[debug] [2021-04-28T19:24:06.906Z] Node Version:  v14.16.1
+[debug] [2021-04-28T19:24:06.906Z] Time:          Wed Apr 28 2021 15:24:06 GMT-0400 (hora de Venezuela)
+[debug] [2021-04-28T19:24:06.906Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-28T19:24:06.911Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-28T19:24:06.911Z] > authorizing via signed-in user (mcornielly@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\mcorn\Documents\doc project\bluuweb\app-auth-vue2
+
