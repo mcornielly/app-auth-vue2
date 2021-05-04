@@ -10,9 +10,14 @@ export default new Vuex.Store({
     user: null,
     error: null,
     task: {},
-    tasks: []
+    tasks: [],
+    loader: false
+
   },
   mutations: {
+    loaderFirebase(state, payload) {
+      state.loader = payload
+    },
     setUser(state, payload) {
       state.user = payload
     },
@@ -32,6 +37,7 @@ export default new Vuex.Store({
   },
   actions: {
     getTasks({commit, state}, userId) {
+      commit('loaderFirebase', true)
       const tasks = []
       db.collection(state.user.email).get()
       .then(res => {
@@ -42,11 +48,15 @@ export default new Vuex.Store({
           task.id = doc.id
           tasks.push(task)
         })
+        setTimeout(() => {
+          commit('loaderFirebase', false)
+        }, 2000)
       })
       commit('setTasks', tasks)
     },
     addTask({commit}, task) {
         // console.log(id)
+        commit('loaderFirebase', true)
         db.collection(task.userEmail).add({
           id: task.id,
           name: task.name,
@@ -54,6 +64,7 @@ export default new Vuex.Store({
         .then(doc => {
           // console.log(doc.id);
           router.push('/')
+          commit('loaderFirebase', false)
         })
     },
     createUser({commit}, user) {
@@ -68,7 +79,7 @@ export default new Vuex.Store({
       })
       .catch(error => {
         console.log(error);
-        commit('setError', error)
+        commit('setError', error.code)
       })
     },
     getTask({commit, state}, taskId) {

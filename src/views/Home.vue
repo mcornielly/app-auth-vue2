@@ -7,7 +7,9 @@
         <router-link class="btn btn-primary btn-block" to="/crear_tarea">Nueva Tarea</router-link>  
         <hr>
         <p>
-            <ul class="list-group">
+            <!-- <div  class="container"> -->
+            <!-- </div> -->
+            <ul class="list-group" v-if="!loader">
                 <li class="list-group-item text-left" v-for="item in tasks" :key="item.id">
                         {{ item.id }} - {{ item.name }}
                     <div class="float-right">
@@ -16,19 +18,24 @@
                     </div>
                 </li>
             </ul>
-        </p>   
+            <rise-loader :loading="loader" color="rgb(128, 139, 150)"></rise-loader>
+        </p>  
     </div>
 </template>
 
 <script>
+import RiseLoader from 'vue-spinner/src/RiseLoader.vue'
 import { mapActions, mapState } from 'vuex'
 export default {
     name: 'Home',
+    components: {
+        RiseLoader
+    },
     created() {
         this.getTasks()
     },
     computed: {
-        ...mapState(['user', 'tasks'])
+        ...mapState(['user', 'tasks', 'loader'])
     },
     methods: {
         ...mapActions(['getTasks', 'deleteTask'])
