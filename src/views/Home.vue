@@ -5,12 +5,19 @@
         <p v-if="user">{{ user.email }}</p>
         <hr>
         <router-link class="btn btn-primary btn-block" to="/crear_tarea">Nueva Tarea</router-link>  
+        <div class="pt-2">
+            <form @submit.prevent="search(text)">
+                <input class="form-control" type="text" placeholder="Buscar una Tarea..." v-model="text"
+                @keyup="search(text)"
+                >
+            </form>
+        </div>
         <hr>
         <p>
             <!-- <div  class="container"> -->
             <!-- </div> -->
             <ul class="list-group" v-if="!loader">
-                <li class="list-group-item text-left" v-for="item in tasks" :key="item.id">
+                <li class="list-group-item text-left" v-for="item in arrayFilter" :key="item.id">
                         {{ item.id }} - {{ item.name }}
                     <div class="float-right">
                         <router-link class="btn btn-dark btn-sm mr-2" :to="{name: 'Edit',params: {id: item.id}}">Editar</router-link>
@@ -25,9 +32,14 @@
 
 <script>
 import RiseLoader from 'vue-spinner/src/RiseLoader.vue'
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 export default {
     name: 'Home',
+    data() {
+        return {
+            text: ''
+        }
+    },
     components: {
         RiseLoader
     },
@@ -35,10 +47,11 @@ export default {
         this.getTasks()
     },
     computed: {
-        ...mapState(['user', 'tasks', 'loader'])
+        ...mapState(['user', 'tasks', 'loader']),
+        ...mapGetters(['arrayFilter'])
     },
     methods: {
-        ...mapActions(['getTasks', 'deleteTask'])
+        ...mapActions(['getTasks', 'deleteTask', 'search'])
     }
 }
 </script>

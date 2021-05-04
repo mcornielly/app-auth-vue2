@@ -11,7 +11,8 @@ export default new Vuex.Store({
     error: null,
     task: {},
     tasks: [],
-    loader: false
+    loader: false,
+    text: ''
 
   },
   mutations: {
@@ -36,6 +37,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    search({commit, state}, payload) {
+      console.log(payload);
+      state.text = payload
+    },
     getTasks({commit, state}, userId) {
       commit('loaderFirebase', true)
       const tasks = []
@@ -121,7 +126,7 @@ export default new Vuex.Store({
       })
       .catch(error => {
         console.log(error);
-        commit('setError', error)
+        commit('setError', error.code)
       })
     },
     logout({commit}) {
@@ -142,6 +147,16 @@ export default new Vuex.Store({
       }else{
         return true
       }
+    },
+    arrayFilter(state){
+      let arrayTask = [];
+      for(let task of state.tasks){
+        let taskName = task.name.toLowerCase();
+        if(taskName.indexOf(state.text) >= 0) {
+          arrayTask.push(task)
+        }
+      }
+      return arrayTask;
     }
   },
   modules: {
